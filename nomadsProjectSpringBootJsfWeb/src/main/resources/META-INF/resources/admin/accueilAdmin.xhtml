@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		<f:metadata>
+    			<f:event type="preRenderView" listener="#{mbAdmin.init}"/>
+		</f:metadata>
+		
+		<h1 style="margin-top: 50px; text-align: center;">Tableau de bord
+			administrateur</h1>
+
+		<div class="">
+			<h3 style="margin-top: 50px; text-align: center;">Statistiques</h3>
+		</div>
+		<div class="">
+		<table  class="table table-striped table-hover" style="background-color: #fff">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Bar</th>
+						<th scope="col">Masseur</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">En attente</th>
+						<td><h:link value="#{mbAdmin.nbBarsEnAttente}"
+								outcome="barsEnAttente.xhtml" /></td>
+						<td><h:link value="#{mbAdmin.nbMasseursEnAttente}" /></td>
+					</tr>
+					<tr>
+						<th scope="row">Actif</th>
+						<td><h:link value="#{mbAdmin.nbBarsActif}" /></td>
+						<td><h:link value="#{mbAdmin.nbMasseursActif}" /></td>
+					</tr>
+					<tr>
+						<th scope="row">Inactif</th>
+						<td><h:link value="#{mbAdmin.nbBarsInactif}" /></td>
+						<td><h:link value="#{mbAdmin.nbMasseursInactif}" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">Tournées</th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">A venir</th>
+						<td><h:link value="#{mbAdmin.nbTourneesAVenir}"
+								outcome="listeDesTournees.xhtml" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">Complète</th>
+						<td><h:link value="#{mbAdmin.nbTourneesComplete}" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">Semi complète</th>
+						<td><h:link value="#{mbAdmin.nbTourneesSemiComplete}" /></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">Vide</th>
+						<td><h:link value="#{mbAdmin.nbTournnesVide}" /></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<h2 style="margin-top: 50px; text-align: center;">Stock</h2>
+		<div class="">
+
+			<table  class="table table-striped table-hover" style="background-color: #fff">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">T-shirts Disponibles</th>
+						<th scope="col">TPE Disponibles</th>
+						<th scope="col">Chaises Disponibles</th>
+						<th scope="col">Packs Proposés</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row"></th>
+						<td>#{mbAdmin.nbTshirtEnStock}</td>
+						<td>#{mbAdmin.nbTPEenStock}</td>
+						<td>#{mbAdmin.nbCahisesEnStock}</td>
+						<td>#{mbAdmin.nbPacksProposes}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

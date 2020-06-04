@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+			
+			<div class="w3-show-inline-block w3-half w3-padding-64 " >
+	    			<div class="card" style="width: 18rem;">
+	    					<img class="card-img-top" src="..." alt="Card image cap" />	
+							<div class="card-body">
+								<p>
+			    					Date : <h:outputText value = "#{mbGlobal.getDateFormated(tdd.tournee.date)}" />
+			               		</p>
+								<p>
+			    					Lieu : <h:outputText value = "#{tdd.lieu.nom}" />
+			               		</p>
+								<p>
+			    					Adresse : <h:outputText value="#{tdd.lieu.adresse.libelleAdresse} #{tdd.lieu.adresse.ville.codePostal} #{tdd.lieu.adresse.ville.libelle}" styleClass="w3-left" /> 
+			               		</p>
+			               		<p>
+			    					Débute à : <h:outputText value = "#{mbGlobal.getTimeFormated(tdd.tournee.heureDebut)}" />
+			               		</p>
+			               		<p>
+			    					Imperativement : <h:outputText value = "#{mbMasseur.afficherTourneeImperative(tdd.tournee.tourneeImperative)}" />
+			               		</p>
+			               		<p>
+			    					Finie à : <h:outputText value = "#{mbGlobal.getTimeFormated(tdd.tournee.heureFin)}" />
+			               		</p>
+			               		<p>
+			    					Prix crédits : <h:outputText value = "#{tdd.tournee.prixCredit}" />
+			               		</p>
+								<p>
+									<b:commandButton value="rejoindre" action="#{mbMasseur.inscrireTournee(tdd.tournee)}" />
+								</p>
+							</div>
+					</div>
+			</div>
+			
+			
+<!-- 			<div class="card" style="width: 18rem;"> -->
+<!-- 			  <img class="card-img-top" src="..." alt="Card image cap"> -->
+<!-- 			  <div class="card-body"> -->
+<!-- 			    <h5 class="card-title">Card title</h5> -->
+<!-- 			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+<!-- 			    <a href="#" class="btn btn-primary">Go somewhere</a> -->
+<!-- 			  </div> -->
+<!-- 			</div> -->
+			
+			
+			
+			
+</ui:composition>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		
+		<h:form>
+			<h3 style="margin-top: 50px;">Liste des packs crédits</h3>
+
+			<div class="w3-container">
+
+				<ui:repeat id="itemsRepeater" value="#{mbCatalogue.packs}" var="p">
+					<ui:include src="itemPresentation.xhtml">
+						<ui:param name="item" value="#{p}" />
+					</ui:include>
+				</ui:repeat>
+
+			</div>
+		</h:form>
+
+		<h:form style="margin-bottom: 50px;">
+			<b:commandButton action="goShoppingBasket" value="Aller au panier" look="default" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

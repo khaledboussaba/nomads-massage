@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		<f:metadata>
+    			<f:event type="preRenderView" listener="#{mbMasseur.init}"/>
+		</f:metadata>
+	<h1 style="margin-top: 50px; text-align: center;">Bienvenue dans votre espace</h1>
+	<h1><h:outputLabel style="color:red;" value="#{mbMasseur.masseur.prenomMasseur}" /></h1>
+
+		<h:outputLabel value="Votre porte monnaie :  #{mbMasseur.masseur.porteMonnaie} crédit(s)" />
+		<div>
+			<h2 style="text-align: center;">Mes tournées à venir</h2>
+		</div>
+		
+		<div class="w3-container">
+		
+			<h:form styleClass="">
+			<b:dataTable value="#{mbMasseur.mesTournees}" var="t">
+				<b:dataTableColumn label="Date" value="#{mbGlobal.getDateFormated(t.date)}" />
+				<b:dataTableColumn label="Heure début" value="#{mbGlobal.getTimeFormated(t.heureDebut)}" />
+				<b:dataTableColumn label="Prix Crédits" value="#{t.prixCredit}" />
+				<b:dataTableColumn>
+					<f:facet name="header">
+					    Adresse
+				    </f:facet>
+				    <h:outputText value="#{mbMasseur.getAdresseStringMasseur(t).nom}" styleClass="w3-left" /><br/>
+					<h:outputText value="#{mbMasseur.getAdresseStringMasseur(t).adresse.libelleAdresse}" styleClass="w3-left" /><br/>
+					<h:outputText value="#{mbMasseur.getAdresseStringMasseur(t).adresse.ville.codePostal} #{mbMasseur.getAdresseStringMasseur(t).adresse.ville.libelle}" styleClass="w3-left" />
+				</b:dataTableColumn>
+				<b:dataTableColumn label="Masseur avec vous" value="#{mbMasseur.getMasseurFor(t.getId())}" />
+				<b:dataTableColumn label="">
+						<b:commandButton value="Annuler" action="#{mbMasseur.annulerTournee(t)}" />
+				</b:dataTableColumn>
+			 </b:dataTable>
+			 	<b:link value="S'inscrire à une tournée" outcome="goToTourneesDispo"
+			styleClass="btn btn-success w3-right" />
+		</h:form>
+			
+			
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

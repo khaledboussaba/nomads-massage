@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		
+		<h:form>
+	    	<div style="margin-top: 50px">
+				<nav class="navbar navbar-light bg-light">
+			  		<h:commandButton value="Afficher tous" action="#{mbCatalogueWs.getAllArticles()}" class="navbar-brand" />
+			  		<h:commandButton value="Tables" action="#{mbCatalogueWs.getTables()}" class="navbar-brand" />
+			  		<h:commandButton value="Chaises" action="#{mbCatalogueWs.getChaises()}" class="navbar-brand" />
+			  		<h:commandButton value="Huiles" action="#{mbCatalogueWs.getHuiles()}" class="navbar-brand" />
+			  		<h:commandButton value="Accessoires" action="#{mbCatalogueWs.getAccessoires()}" class="navbar-brand" />
+			  		<h:commandButton value="Bons cadeaux" action="#{mbCatalogueWs.getCadeaux()}" class="navbar-brand" />
+			  		<h:commandButton value="Packs" action="#{mbCatalogueWs.getPacks()}" class="navbar-brand" />
+				</nav>
+			</div>
+			
+			<div>
+				<h:outputLabel value="#{mbCatalogueWs.articlesAffihes}" />
+			</div>
+			</h:form>
+	    	<h:form>
+			<div class="w3-container" style="display:#{mbCatalogueWs.hideDivArticles}">
+
+				<ui:repeat id="itemsRepeater" value="#{mbCatalogueWs.tousLesArticles}" var="a">
+					<ui:include src="articlePresentation.xhtml">
+						<ui:param name="item" value="#{a}" />
+					</ui:include>
+				</ui:repeat>
+
+			</div>
+			
+			<div class="w3-container" style="display:#{mbCatalogueWs.hideDivPacks}">
+
+				<ui:repeat id="itemsRepeaterPacks" value="#{mbCatalogue.packs}" var="p">
+					<ui:include src="packPresentation.xhtml">
+						<ui:param name="item" value="#{p}" />
+					</ui:include>
+				</ui:repeat>
+
+			</div>
+			
+			
+			
+		</h:form>
+
+		<h:form style="margin-bottom: 50px;">
+			<b:commandButton action="goShoppingBasket" value="Aller au panier" look="default" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

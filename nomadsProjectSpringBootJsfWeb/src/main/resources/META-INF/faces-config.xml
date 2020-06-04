@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+	<navigation-rule>
+		<from-view-id></from-view-id>
+		<navigation-case>
+			<from-outcome>goToTourneesDispo</from-outcome>
+			<to-view-id>/masseur/tourneesDisponibles.xhtm</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToHomePage</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToLogin</from-outcome>
+			<to-view-id>/login/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goShoppingBasket</from-outcome>
+			<to-view-id>/produit_achat/panier.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goDisconnect</from-outcome>
+			<to-view-id>/login/logout.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToRegister</from-outcome>
+			<to-view-id>/register/register.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>goToRegisterCommanditaire</from-outcome>
+			<to-view-id>/register/registerCommanditaire.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToRegisterMasseur</from-outcome>
+			<to-view-id>/register/registerMasseur.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>indexAdministrateur</from-outcome>
+			<to-view-id>/users/administrateur/indexAdministrateur.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indexMasseur</from-outcome>
+			<to-view-id>/users/masseur/indexMasseur.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>indexCommanditaire</from-outcome>
+			<to-view-id>/users/commanditaire/indexCommanditaire.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToCommanderPrestation</from-outcome>
+			<to-view-id>/commanditaire/commanderPrestation.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>goRegisterAdministrateur</from-outcome>
+			<to-view-id>/register/registerAdministrateur.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+
+
+	</navigation-rule>
+
+
+	<navigation-rule>
+		<from-view-id></from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/login/success.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/login/failure.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- produit_achat -->
+	<navigation-rule>
+		<from-view-id></from-view-id>
+		<navigation-case>
+			<from-outcome>panier</from-outcome>
+			<to-view-id>/produit_achat/panier.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>commande_success</from-outcome>
+			<to-view-id>/produit_achat/commande_success.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>catalogue</from-outcome>
+			<to-view-id>/produit_achat/catalogue.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>paiement</from-outcome>
+			<to-view-id>/produit_achat/paiement.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>commande_success</from-outcome>
+			<to-view-id>/produit_achat/commande_success.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+
+	</navigation-rule>
+
+	<!-- Masseur navbar -->
+	<navigation-rule>
+		<from-view-id></from-view-id>
+		<navigation-case>
+			<from-outcome>goToAccueilMasseur</from-outcome>
+			<to-view-id>/masseur/accueilMasseur.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToCatalogue</from-outcome>
+			<to-view-id>/produit_achat/catalogue.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToCatalogueWS</from-outcome>
+			<to-view-id>/produit_achat/ws_produit_achat/catalogueWS.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- Commanditaire navbar -->
+	<navigation-rule>
+		<from-view-id></from-view-id>
+		<navigation-case>
+			<from-outcome>goToAjouterLieu</from-outcome>
+			<to-view-id>/commanditaire/ajouterLieu.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToAjouterTournee</from-outcome>
+			<to-view-id>/commanditaire/ajouterTournee.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>goToAccueilCommanditaire</from-outcome>
+			<to-view-id>/commanditaire/accueilCommanditaire.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+</faces-config>

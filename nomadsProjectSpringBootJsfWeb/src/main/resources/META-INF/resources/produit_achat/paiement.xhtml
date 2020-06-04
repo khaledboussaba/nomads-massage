@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		
+		<h2 style="margin-top:50px; text-align: center;"> 
+			Montant de votre commande <h:outputText value="#{mbCurrencies.convert(mbCatalogueWs.totalPrixPanier)}"><f:convertNumber pattern = "#.00€" /></h:outputText> 
+		</h2>
+		<b:form horizontal="true" class="w3-container w3-card-4 w3-padding-16 w3-white w3-twothird-center w3-left-align">
+				
+						<b:row>
+							<b:column  offset="2" span="8">
+								<b:inputText 
+									placeholder="Titulaire de la carte" 
+									label="Titulaire de la carte" 
+									id="titulaire" 
+									value="#{mbGlobal.dummyString1ForCB}">
+									<f:facet name="prepend">
+										<b:iconAwesome name="fa-industry" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column  offset="2" span="8">
+								<b:inputText 
+									placeholder="Numéro de la carte" 
+									label="Numéro de la carte" 
+									id="numCarte" 
+									value="#{mbGlobal.dummyString2ForCB}">
+									<f:facet name="prepend">
+										<b:iconAwesome name="fa-industry" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column  offset="2" span="8">
+								<b:dateTimePicker format="MM/YYYY" show-date="true" show-time="false" value="#{mbGlobal.dummyDate4ForCB}" >
+									<f:facet name="prepend">
+										<b:iconAwesome name="fa-industry" />
+									</f:facet>
+								</b:dateTimePicker>
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column  offset="2" span="8">
+								<b:inputText 
+									placeholder="Code de vérification" 
+									label="Code de vérification" 
+									id="codeVerification"
+									value="#{mbGlobal.dummyString3ForCB}">
+									<f:facet name="prepend">
+										<b:iconAwesome name="fa-industry" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+					<b:row>	
+						<b:column  offset="3" span="4">
+							<b:commandButton action="#{mbCatalogue.allerAuPanier}" value="Retour au panier" class="btn btn-default"/><h:outputText value="&#160;" /><h:outputText value="&#160;" />
+		  				</b:column>
+		  				<b:column  offset="0" span="4">
+		  					<b:commandButton action="#{mbPanier.enregistrerCommande}" value="Payer" class="btn btn-success"/>
+	  					</b:column>
+  					</b:row>
+		</b:form>
+		
+		
+		
+		
+	</ui:define>
+</ui:composition>
+
+</html>

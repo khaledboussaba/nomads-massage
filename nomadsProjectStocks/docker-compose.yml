@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  db_stock:
+    image: mysql:5.7
+    hostname: stock.sql
+    domainname: nomads.fr.to
+    restart: always
+    environment:
+      MYSQL_DATABASE: stock_bdd
+      MYSQL_USER: rootStock
+      MYSQL_PASSWORD: rootStockPassword
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - volume_db_stock:/var/lib/mysqlStocks
+  stock:
+    image: stock_img
+    hostname: stock.rest.api
+    domainname: nomads.fr.to
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 900:900
+
+
+volumes:
+  volume_db_stock:

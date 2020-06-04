@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<f:view>
+	<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Version</title>
+	</head>
+	<body>
+		<h1>Service Name : #{versionMb.name}</h1>
+		<h2>Version : #{versionMb.version}</h2>
+		<h3>We have #{currenciesMb.nbrCurrencies} currencies in database</h3>
+		<br/>
+		<a href="http://127.0.0.1:91/api/serviceName">Get api service name</a><br/>
+		<a href="http://127.0.0.1:91/api/version">Get api version</a><br/>
+		<a href="http://127.0.0.1:91/api/currencies/latest">Get latest currencies</a><br/>
+		<a href="http://127.0.0.1:91/api/currencies/latest/USD">Get latest value of USD</a><br/>
+	
+	</body>
+</f:view>
+</html>

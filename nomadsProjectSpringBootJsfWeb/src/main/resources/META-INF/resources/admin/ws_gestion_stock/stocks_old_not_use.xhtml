@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+	
+		<div class="bg-light border-right" id="sidebar-wrapper"  style="margin-top: 50px">
+	      <div class="list-group list-group-flush">
+	        <a href="../accueilAdmin.xhtml" class="list-group-item list-group-item-action bg-light">Accueil</a>
+	        <a href="tables-stock.xhtml" class="list-group-item list-group-item-action bg-light">Tables</a>
+	        <a href="chaise-stock.xhtml" class="list-group-item list-group-item-action bg-light">Chaises</a>
+	        <a href="huiles-stock.xhtml" class="list-group-item list-group-item-action bg-light">Huiles</a>
+	        <a href="accessoires-stock.xhtml" class="list-group-item list-group-item-action bg-light">Accessoires</a>
+	        <a href="cadeau-stock.xhtml" class="list-group-item list-group-item-action bg-light">Bons cadeaux</a>
+	      </div>
+	    </div>
+		<div class="container-fluid">
+		<!--  -->
+		<h2>Tables</h2>
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbStock.tables}" var="t">
+					<b:dataTableColumn label="Désignation" value="#{t.designation}" />
+					<b:dataTableColumn label="Prix unitaire HT" value="#{t.prixUnitaireHT}" />
+					<b:dataTableColumn label="TVA" value="#{t.tauxTva} %" />
+					<b:dataTableColumn label="Prix unitaire TTC" value="#{t.prixUnitaireTTC}" />
+					<b:dataTableColumn label="En stock" value="#{t.quantite}" />
+					<b:dataTableColumn label="Photo">
+						<img src="/#{t.photo}" />
+					</b:dataTableColumn>
+					<b:dataTableColumn label="">
+					<b:commandButton value="Modifier"
+						action="#{mbStock.nothing}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+		
+		<h2>Chaises</h2>
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbStock.chaises}" var="c">
+					<b:dataTableColumn label="Désignation" value="#{c.designation}" />
+					<b:dataTableColumn label="Prix unitaire HT" value="#{c.prixUnitaireHT}" />
+					<b:dataTableColumn label="TVA" value="#{c.tauxTva} %" />
+					<b:dataTableColumn label="Prix unitaire TTC" value="#{c.prixUnitaireTTC}" />
+					<b:dataTableColumn label="En stock" value="#{c.quantite}" />
+					<b:dataTableColumn label="Photo">
+						<img src="/#{c.photo}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+		
+		<h2>Huiles</h2>
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbStock.huiles}" var="h">
+					<b:dataTableColumn label="Désignation" value="#{h.designation}" />
+					<b:dataTableColumn label="Prix unitaire HT" value="#{h.prixUnitaireHT}" />
+					<b:dataTableColumn label="TVA" value="#{h.tauxTva} %" />
+					<b:dataTableColumn label="Prix unitaire TTC" value="#{h.prixUnitaireTTC}" />
+					<b:dataTableColumn label="En stock" value="#{h.quantite}" />
+					<b:dataTableColumn label="Photo">
+						<img src="/#{h.photo}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+		
+		<h2>Accessoires</h2>
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbStock.accessoires}" var="a">
+					<b:dataTableColumn label="Désignation" value="#{a.designation}" />
+					<b:dataTableColumn label="Prix unitaire HT" value="#{a.prixUnitaireHT}" />
+					<b:dataTableColumn label="TVA" value="#{a.tauxTva} %" />
+					<b:dataTableColumn label="Prix unitaire TTC" value="#{a.prixUnitaireTTC}" />
+					<b:dataTableColumn label="En stock" value="#{a.quantite}" />
+					<b:dataTableColumn label="Photo">
+						<img src="/#{a.photo}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+		
+		<h2>Bons cadeaux</h2>
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbStock.bonsCadeaux}" var="b">
+					<b:dataTableColumn label="Désignation" value="#{b.designation}" />
+					<b:dataTableColumn label="Prix TTC" value="#{b.prixUnitaireTTC}" />
+					<b:dataTableColumn label="Photo">
+						<img src="/#{b.photo}" />
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+</div>
+	</ui:define>
+</ui:composition>
+</html>

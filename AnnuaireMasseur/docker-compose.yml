@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+
+  db_annuaire:
+    image: mysql:5.7
+    hostname: annuaire.sql
+    domainname: nomads.fr.to
+    restart: always
+    environment:
+      MYSQL_DATABASE: annuaire_masseur
+      MYSQL_USER: rootAnnuaire
+      MYSQL_PASSWORD: rootAnnuairePassword
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - volume_db_annuaire:/var/lib/mysqlAnnuaire
+  annuaire:
+    image: annuaire_img
+    hostname: annuaire.rest.api
+    domainname: nomads.fr.to
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 92:92
+
+
+volumes:
+  volume_db_annuaire:

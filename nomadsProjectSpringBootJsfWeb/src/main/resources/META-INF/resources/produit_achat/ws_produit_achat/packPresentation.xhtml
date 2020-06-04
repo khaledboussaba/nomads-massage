@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+			
+			<div class="w3-show-inline-block w3-half w3-padding-64 " >
+	    			<div  class="w3-right-align w3-half w3-show-inline-block w3-padding">
+	    				<h:graphicImage value="/img/creditPack.png" class="w3-image w3-right"/> 
+	   				</div>
+	    			<div class="w3-left-align w3-half w3-show-inline-block w3-padding">	
+						<p>
+	    					<h:outputText value = "#{p.libelle}" />
+	               		</p>
+						<p>
+	    					<h:outputText value = "#{mbCurrencies.convert(p.prixEuro)}" />
+	               		</p>
+						<p>
+						<b:commandButton action="#{mbCatalogueWs.ajouterPanier(p)}" class="w3-button  w3-theme w3-center" value="Ajouter"  iconAwesome="fa-cart-arrow-down" />
+						</p>
+					</div>
+			</div>		
+			
+</ui:composition>
+

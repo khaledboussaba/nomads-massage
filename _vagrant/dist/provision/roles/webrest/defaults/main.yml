@@ -1,0 +1,7 @@
+---
+
+webrest:
+  logstashFiles: /tmp/logstash
+  restFiles: /tmp/rest
+  webFiles: /tmp/web
+  composeFile: /tmp

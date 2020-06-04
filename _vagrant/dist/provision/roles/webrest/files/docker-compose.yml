@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: nomads_bdd
+      MYSQL_USER: rootRest
+      MYSQL_PASSWORD: rootRestPassword
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - volume_db_rest:/var/lib/mysqlRest
+      
+  rest:
+    image: rest_img
+    build: 
+      context: .
+      dockerfile: ./rest/Dockerfile
+    restart: always
+    ports:
+      - 8090:8090
+
+  web:
+    image: nomads_web_img
+    build: 
+      context: .
+      dockerfile: ./web/Dockerfile
+    restart: always
+    ports:
+      - 80:80
+  
+  
+volumes:
+  volume_db_rest:

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		<h3 style="margin-top:50px;">Félicitations #{mbMasseur.masseur.prenomMasseur} !</h3>
+		<h:form>
+			<div>
+				<h2 align="center">
+					Votre commande n° #{mbPanier.commandeASauvegarder.id} a bien été enregistrée
+					</h2>
+			</div>
+			<div id="catalogue">
+				<b:commandButton value="Retour à la boutique" action="catalogue" styleClass="btn btn-default" /><h:outputText value="&#160;" /><h:outputText value="&#160;" />
+				<b:commandButton value="Retour à l'accueil" action="/masseur/accueilMasseur.xhtml" styleClass="btn btn-default" />
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>
+
+
+
+
+<!-- 				<h:commandButton value="AjoutPanier" -->
+<!-- 				actionListener="#{mbCatalogue.ajoutPanier()}" /> -->
+<!-- 				</h:column> -->

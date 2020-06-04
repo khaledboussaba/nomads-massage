@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<!-- Navbar -->
+	<!-- Navbar on small screens -->
+		
+	<div class="w3-top z-index-top">
+		<div class="w3-bar w3-theme-d2 w3-left-align">
+			<a
+				class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2"
+				href="javascript:void(0);" onclick="openNav()"><i
+				class="fa fa-bars"></i></a>
+			<h:link outcome="/index" class="w3-bar-item w3-button w3-teal">NOMAD'S MASSAGE</h:link>
+			<h:panelGroup id="idIncludeNavMasseurBigScreen"
+				rendered="#{mbLogin.estMasseur()}" class="w3-hide-small  w3-right">
+				<ui:include src="/WEB-INF/header/navbar-masseur.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup id="idIncludeNavCommanditaireBigScreen"
+				rendered="#{mbLogin.estCommanditaire()}" class="w3-hide-small  w3-right">
+				<ui:include src="/WEB-INF/header/navbar-commanditaire.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup id="idIncludeNavVisitorBigScreen"
+				rendered="#{mbLogin.estVisiteur()}" class="w3-hide-small  w3-right">
+				<ui:include src="/WEB-INF/header/navbar-visitor.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup id="idIncludeNavAdministratorBigScreen"
+				rendered="#{mbLogin.estAdministrateur()}" class="w3-hide-small  w3-right">
+				<ui:include src="/WEB-INF/header/navbar-administrateur.xhtml" />
+			</h:panelGroup>
+		</div>
+
+		
+	</div>
+	
+	<div class="w3-sidebar w3-hide z-index-top-mini-menu" id="navSideMenuBurger" >
+		<div 
+			class="w3-bar-block w3-theme-d2">
+			<h:link outcome="goToHomePage" class="w3-bar-item w3-button w3-teal">NOMAD'S MASSAGE</h:link>
+			<h:panelGroup id="idIncludeNavMasseurSmallScreen"
+				rendered="#{mbLogin.estMasseur()}">
+				<ui:include src="/WEB-INF/header/navbar-masseur.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup id="idIncludeNavCommanditaireSmallScreen"
+				rendered="#{mbLogin.estCommanditaire()}">
+				<ui:include src="/WEB-INF/header/navbar-commanditaire.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup id="idIncludeNavVisitorSmallScreen"
+				rendered="#{mbLogin.estVisiteur()}">
+				<ui:include src="/WEB-INF/header/navbar-visitor.xhtml" />
+			</h:panelGroup>
+			<h:panelGroup id="idIncludeNavAdministrateurSmallScreen"
+				rendered="#{mbLogin.estAdministrateur()}">
+				<ui:include src="/WEB-INF/header/navbar-administrateur.xhtml" />
+			</h:panelGroup>
+		</div>
+	</div>
+	
+	
+</ui:composition>

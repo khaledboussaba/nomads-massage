@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<h3 style="margin-top: 50px;">Stocks et Formules :</h3>
+
+		<div>
+			<h:link value="Détails" outcome="listeProduitsAdmin.xhtml"></h:link>
+		</div>
+
+		<div class="container">
+
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">T-shirts Disponibles</th>
+						<th scope="col">TPE Disponibles</th>
+						<th scope="col">Chaises Disponibles</th>
+						<th scope="col">Packs Proposés</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row"></th>
+						<td>#{mbAdmin.nbTshirtEnStock}</td>
+						<td>#{mbAdmin.nbTPEenStock}</td>
+						<td>#{mbAdmin.nbCahisesEnStock}</td>
+						<td>#{mbAdmin.nbPacksProposes}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</ui:define>
+</ui:composition>
+</html>

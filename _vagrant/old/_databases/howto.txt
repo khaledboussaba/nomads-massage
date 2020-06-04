@@ -1,0 +1,4 @@
+==On local host example connection==
+mysql -h127.0.0.1 -unomads -pmassage
+mongo --port 27017  --authenticationDatabase "admin" -u "nomads" -p "massage"
+

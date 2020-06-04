@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: logServer
+      MONGO_INITDB_ROOT_PASSWORD: logServerPassword
+    ports:
+      - 27017:27017
+
+  nomadsDatabasesLogger:
+    image: nomads_databases_logger_img
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 80:80
+
+
+volumes:
+  volume_db_jsapp:

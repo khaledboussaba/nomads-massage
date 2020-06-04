@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<h3 style="margin-top:50px;">Ajouter votre nouvelle tournée</h3>
+
+		<h:form styleClass="w3-left-align" >
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Lieu" />
+				</b:column>
+				<b:column>
+					<b:selectOneMenu value="#{mbCommanditaire.lieuSelected}">
+						<f:selectItems 
+							value="#{mbCommanditaire.lieuxActif}"
+							var="l"
+							itemValue="#{l}"
+							itemLabel="#{l.nom}"/>
+					</b:selectOneMenu>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Date" />
+				</b:column>
+				<b:column>
+					<b:datepicker value="#{mbCommanditaire.tournee.date}"/>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Heure Début" />
+				</b:column>
+				<b:column>
+					<b:dateTimePicker 
+						format="HH:mm" 
+						show-date="false" 
+						show-time="true" 
+						value="#{mbCommanditaire.tournee.heureDebut}" 
+						/>
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Heure Fin" />
+				</b:column>
+				<b:column>
+					<b:dateTimePicker format="HH:mm" show-date="false" show-time="true" value="#{mbCommanditaire.tournee.heureFin}" />
+				</b:column>
+			</b:row>
+			
+			<b:row styleClass="w3-padding-16">
+				<b:column span="3"  offset="3">
+					<b:commandButton value="Annuler" action="/commanditaire/accueilCommanditaire.xhtml?faces-redirect=true" style="width:100%" />
+				</b:column>
+				<b:column span="3">
+					<b:commandButton value="Valider" action="#{mbCommanditaire.ajouterTournee()}" style="width:100%" />
+				</b:column>
+			</b:row>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

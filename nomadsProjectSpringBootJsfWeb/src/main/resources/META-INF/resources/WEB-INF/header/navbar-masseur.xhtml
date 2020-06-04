@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+	<h:link value="Accueil" outcome="goToAccueilMasseur"
+		class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-home" />
+	</h:link>
+	<h:link value="Tournées" outcome="goToTourneesDispo"
+		class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-circle-o" />
+	</h:link>
+	<h:link value="Boutique" outcome="goToCatalogue"
+		class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-shopping-cart" />
+	</h:link>
+	<h:link value="BoutiqueWS" outcome="goToCatalogueWS"
+		class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-shopping-cart" />
+	</h:link>
+	<h:link outcome="goShoppingBasket" value="#{mbLogin.panierString}"
+		class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-shopping-basket" />
+	</h:link>
+	<h:link value="Crédit #{mbMasseur.masseur.porteMonnaie}"
+		class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-money" />
+	</h:link>
+
+
+	<h:form class="w3-bar-item w3-button w3-hover-teal reset-bar-item"
+		rendered="#{mbCurrencies.serviceEnabled}">
+		<h:selectOneMenu valueChangeListener="#{mbCurrencies.currencyChanged}"
+			value="#{mbCurrencies.currentCurrencyName}" onchange="submit()">
+			<f:selectItems value="#{mbCurrencies.allCurrenciesName}" var="c"
+				itemLabel="#{c}" itemValue="#{c}" />
+		</h:selectOneMenu>
+
+	</h:form>
+
+	<h:link outcome="goDisconnect" value="Se deconnecter"
+		class="w3-bar-item w3-button w3-hover-teal" />
+</ui:composition>

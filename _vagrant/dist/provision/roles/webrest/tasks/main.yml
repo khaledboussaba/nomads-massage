@@ -1,0 +1,53 @@
+---
+
+- name: "Copy JAR docker file to {{ webrest.webFiles }}"
+  copy:
+    src: "{{ role_path }}/../../../../../nomadsProjectSpringBootJsfWeb/target/nomadsProjectSpringBootJsfWeb.jar"
+    dest: "{{ webrest.webFiles }}/"
+
+- name: "Copy JAR  docker file to {{ webrest.restFiles }}"
+  copy:
+    src: "{{ role_path }}/../../../../../nomadsProjectSpringBootJsfWsRest/target/nomadsProjectSpringBootJsfWsRest-0.0.1-SNAPSHOT.jar"
+    dest: "{{ webrest.restFiles }}/"
+
+- name: "Copy web docker file to {{ webrest.webFiles }}"
+  copy:
+    src: "{{ role_path }}/files/web/"
+    dest: "{{ webrest.webFiles }}/"
+
+- name: "Copy rest  docker file to {{ webrest.restFiles }}"
+  copy:
+    src: "{{ role_path }}/files/rest/"
+    dest: "{{ webrest.restFiles }}/"
+
+- name: "Copy docker-compose.yml file to {{ webrest.composeFile }}"
+  copy:
+    src: "{{ role_path }}/files/docker-compose.yml"
+    dest: "{{ webrest.composeFile }}/docker-compose.yml"
+
+- name: run stop all Dockers
+  shell: docker stop $(docker ps -a -q)
+  ignore_errors: yes
+
+- name: run stop rm all Dockers
+  shell: docker rm $(docker ps -a -q) 
+  ignore_errors: yes
+
+- name: run clean all Docker images
+  shell: docker rmi -f $(docker images -q) 
+  ignore_errors: yes
+
+- name: run clean all Docker volumes
+  shell: docker volume rm $(docker volume ls -q) 
+  ignore_errors: yes
+
+- name: run clean all Docker networks
+  shell: docker network prune -f 
+  ignore_errors: yes
+
+- name: run PRUNE SYSTEM FORCED
+  shell: docker system prune -af --volumes 
+  ignore_errors: yes
+
+- name: run docker-compose
+  shell: docker-compose -f "{{ webrest.composeFile }}/docker-compose.yml" -p web up -d

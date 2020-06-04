@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+			<h3 style="margin-top: 50px;">Liste des Crédits :</h3>
+
+			<div class="container">
+				<h:dataTable styleClass="table" value="#{mbCatalogue.packs}" var="p">
+					<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{p.id}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Libelle</f:facet>
+						<h:outputText value="#{p.libelle}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Prix</f:facet>
+						<h:outputText value="#{p.prixEuro}" />
+					</h:column>
+					<h:column>
+						<h:commandButton value="Ajouter +1"
+							action="#{mbCatalogue.ajouterPanier(p)}">
+							<!-- 						<f:setPropertyActionListener target="#{mbCatalogue.idProduitAChercher}" value="#{p.id}" /> -->
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			</div>
+		</h:form>
+
+
+		<h:form>
+			<div>
+				<h:outputLabel value="Nombre arcticle dans le panier : "></h:outputLabel>
+				<h:outputText value="#{mbCatalogue.qteProduitPanier}"></h:outputText>
+				<br />
+				<h:outputLabel value="Dernier produit choisi :  "></h:outputLabel>
+				<h:outputText value="#{mbCatalogue.produitChoisi.libelle}"></h:outputText>
+				<br />
+			</div>
+			<div>
+				<h:commandButton action="#{mbCatalogue.allerAuPanier}"
+					value="Aller au panier"></h:commandButton>
+			</div>
+			<b:link value="Accueil" outcome="/masseur/accueilMasseur.xhtml" styleClass="btn btn-success" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

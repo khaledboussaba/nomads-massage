@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<div style="margin-top: 50px">
+			<nav class="navbar navbar-light bg-light">
+		  		<a class="navbar-brand" href="../accueilAdmin.xhtml">Accueil</a>
+		  		<a class="navbar-brand" href="tables-stock.xhtml">Tables</a>
+		  		<a class="navbar-brand" href="chaise-stock.xhtml">Chaises</a>
+		  		<a class="navbar-brand" href="huiles-stock.xhtml">Huiles</a>
+		  		<a class="navbar-brand" href="accessoires-stock.xhtml">Accessoires</a>
+		  		<a class="navbar-brand" href="cadeau-stock.xhtml">Bons cadeaux</a>
+			</nav>
+		</div>
+		<div class="container-fluid">
+
+
+			<h2>Chaises</h2>
+			<div class="">
+				<h:form>
+					<b:dataTable value="#{mbStock.chaises}" var="c">
+						<b:dataTableColumn label="Désignation" value="#{c.designation}" />
+						<b:dataTableColumn label="Prix unitaire HT"
+							value="#{c.prixUnitaireHT}" />
+						<b:dataTableColumn label="TVA" value="#{c.tauxTva} %" />
+						<b:dataTableColumn label="Prix unitaire TTC"
+							value="#{c.prixUnitaireTTC}" />
+						<b:dataTableColumn label="En stock" value="#{c.quantite}" />
+						<b:dataTableColumn label="Photo">
+							<img src="/#{c.photo}" />
+						</b:dataTableColumn>
+						<b:dataTableColumn label="">
+							<b:commandButton value="Détails" action="#{mbStock.selectArtcile(c)}" />
+						</b:dataTableColumn>
+					</b:dataTable>
+				</h:form>
+			</div>
+			
+			<div class="" style="display:#{mbStock.hideDivUpdate}">
+				<h:form>
+					<table class="table table-bordered">
+						<tr>
+							<td>Désignation</td>
+							<td><h:inputText value="#{mbStock.articleSelected.designation}" /></td>
+						</tr>
+						<tr>
+							<td>Prix HT</td>
+							<td>
+								<h:inputText class="horsTaxe" type="number" onkeyup="calculTTC()" name="horsTaxe" value="#{mbStock.articleSelected.prixUnitaireHT}" />
+							</td>
+						</tr>
+						<tr>
+							<td>TVA</td>
+							<td><h:inputText class="tauxTva" type="number" onkeyup="calculTTC()" name="tauxTva" value="#{mbStock.articleSelected.tauxTva}" /></td>
+						</tr>
+						<tr>
+							<td>Prix TTC</td>
+							<td><h:inputText type="number" class="prixTTC" name="prixTTC" value="#{mbStock.articleSelected.prixUnitaireTTC}">
+									<f:convertNumber maxFractionDigits="2" groupingUsed="false" />
+								</h:inputText>
+							</td>
+						</tr>
+						<tr>
+							<td>Quantité en stock</td>
+							<td><h:inputText value="#{mbStock.articleSelected.quantite}" /></td>
+						</tr>
+						<tr>
+							<td>Catégorie</td>
+							<td><h:outputText value="#{mbStock.articleSelected.categorie.designation}" /></td>
+						</tr>
+						<tr>
+							<td>
+								<h:commandButton value="Modifier" class="btn btn-primary" action="#{mbStock.updateArticle()}" />
+							</td>
+							<td>
+								<h:commandButton value="Supprimer" class="btn btn-danger" action="#{mbStock.deleteArticle()}" />
+							</td>
+							<td>
+								<h:commandButton value="Annuler" class="btn btn-default" action="#{mbStock.fermerDetails()}" />
+							</td>
+						</tr>
+					</table>
+				</h:form>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

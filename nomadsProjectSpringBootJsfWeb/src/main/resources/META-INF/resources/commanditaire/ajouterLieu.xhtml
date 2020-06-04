@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<h3 style="margin-top:50px;">Ajouter votre nouveau lieu</h3>
+
+		<h:form styleClass="w3-left-align">
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Lieu" />
+				</b:column>
+				<b:column>
+					<b:inputText value="#{mbCommanditaire.nouveauLlieu.nom}" />
+				</b:column>
+			</b:row>
+			
+			<b:row>
+				<b:column>
+					<h:outputLabel value="n°, voie" />
+				</b:column>
+				<b:column>
+					<b:inputText value="#{mbCommanditaire.adresse.libelleAdresse}" />
+				</b:column>
+			</b:row>		
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Code postal" />
+				</b:column>
+				<b:column>
+					<b:inputText value="#{mbCommanditaire.ville.codePostal}" />
+				</b:column>
+			</b:row>
+			<b:row>
+				<b:column>
+					<h:outputLabel value="Ville" />
+				</b:column>
+				<b:column>
+					<b:inputText value="#{mbCommanditaire.ville.libelle}" />
+				</b:column>
+			</b:row>
+			
+			<b:row>
+				<b:column span="3" offset="3" >
+					<b:commandButton value="Annuler" action="/commanditaire/accueilCommanditaire.xhtml?faces-redirect=true" style="width:100%" />
+				</b:column>
+				<b:column span="3" offset="0" >
+					<b:commandButton value="Valider" action="#{mbCommanditaire.ajouterLieu()}" style="width:100%" />
+				</b:column>
+			</b:row>
+		</h:form>
+
+
+
+	</ui:define>
+</ui:composition>
+</html>

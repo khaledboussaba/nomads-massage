@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="/WEB-INF/MasterPage.xhtml">	
+		<ui:define name="title">Nomad's</ui:define>
+			<ui:define name="content">
+				<f:metadata>
+        			<f:event type="preRenderView" listener="#{mbRegisterMasseur.initUserOnLoad}"/>
+     			</f:metadata>
+				<div class="w3-container w3-padding-64 w3-center" id="presentation">
+					<h:form enctype="multipart/form-data"
+						class="w3-container w3-card-4 w3-padding-16 w3-white w3-half-center">
+						<h:outputText value="#{registerBacking.error}" class="w3-text-red w3-large"/>
+						<div class="w3-container w3-theme-l5" id="contact">
+							<div class="w3-section">
+								<label>login : </label>
+								<h:inputText id="login" value="#{mbRegisterMasseur.utilisateur.credentials.login}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Mots de passe : </label>
+								<h:inputText id="password" value="#{mbRegisterMasseur.utilisateur.credentials.clearPassword}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Titre : </label>
+								<h:selectOneListbox id="titre" value="#{mbRegisterMasseur.utilisateur.contacts[0].titre.libelle}"
+									class="w3-input">
+										<f:selectItem itemValue = "Mr" itemLabel = "Monsieur" /> 
+		   								<f:selectItem itemValue = "Mme" itemLabel = "Madame" /> 
+								</h:selectOneListbox>
+							</div>
+							<div class="w3-section">
+								<label>Nom : </label>
+								<h:inputText id="nom" value="#{mbRegisterMasseur.utilisateur.nomMasseur}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Prenom : </label>
+								<h:inputText id="prenom" value="#{mbRegisterMasseur.utilisateur.prenomMasseur}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Adresse : </label>
+								<h:inputText id="adresse" value="#{mbRegisterMasseur.utilisateur.adresse.libelleAdresse}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Email : </label>
+								<h:inputText id="email" value="#{mbRegisterMasseur.utilisateur.contacts[0].email}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Téléphone : </label>
+								<h:inputText id="phone" value="#{mbRegisterMasseur.utilisateur.contacts[0].numeroTelephone}"
+									class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Raison Social : </label>
+								<h:inputText id="raisonSocial"
+									value="#{mbRegisterMasseur.utilisateur.raisonSociale}" class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Numéro de Siret : </label>
+								<h:inputText id="numeroSiret"
+									value="#{mbRegisterMasseur.utilisateur.numeroSIRET}" class="w3-input" />
+							</div>
+							<div class="w3-section">
+								<label>Date de naissance : </label>
+								<h:inputText id="dateNaissance" value="#{mbRegisterMasseur.utilisateur.dateNaissance}"
+									label="Date" class="w3-input">
+									<f:convertDateTime pattern="dd-mm-yyyy"/> 
+								</h:inputText>
+								<h:message for = "dateNaissance" style = "color:red" />
+							</div>
+							<div class="w3-section">
+								<label>Disponibilité : </label>
+								<h:inputText id="disponibilite"
+									label="Date" value="#{mbRegisterMasseur.utilisateur.disponibilite[0].date}" class="w3-input">
+									<f:convertDateTime pattern="dd-mm-yyyy"/> 
+								</h:inputText>
+								<h:message for = "disponibilite" style = "color:red" />
+							</div>
+							<h:commandButton action="#{mbLogin.validezMasseur}" class="w3-button w3-right w3-theme" value="VALIDEZ VOTRE INSCRIPTION"/>
+						</div>
+					</h:form>
+				</div>
+
+			</ui:define>
+	</ui:composition>
+</html>

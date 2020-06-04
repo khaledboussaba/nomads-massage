@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<div class="container" style="max-width:70%; margin-top: 50px; text-align:center;">
+			<h:form>
+				<b:container fluid="true">
+					<b:row>
+						<b:column span="4">
+							<h:outputText value="Nom utilisateur" />
+						</b:column>
+						<b:column span ="8">
+							<b:inputText value="#{mbLogin.login}" placeholder="login" id="login" />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="12">
+							<b:message for="login"/>
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<h:outputText value="Mot de passe" />
+						</b:column>
+						<b:column span="8">
+							<b:inputSecret value="#{mbLogin.clearPassword}" placeholder="password" id="password" />
+						</b:column>
+					</b:row>
+					<b:row>
+					<b:column medium-screen="12">
+							<b:message for="password" />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="5">
+							<b:commandButton value="mot de passe oublié" look="danger" style="width:100%" />
+						</b:column>
+						<b:column span="5" offset="2">
+							<b:commandButton action="#{mbLogin.connexion}" value="connexion" look="primary" style="width:100%" />
+						</b:column>
+						
+					</b:row>
+				</b:container>
+			</h:form>
+		</div>
+		
+		<div class="container" style="margin-top: 50px; text-align:center;">
+			<h:form>
+					<b:container fluid="true">
+						<b:row>
+							<b:column span="3">
+								<b:commandButton action="#{mbLogin.demoConnexionAdmin}" value="DEMO Admin" look="default" style="width:100%" />
+							</b:column>
+							<b:column span="3">
+								<b:commandButton action="#{mbLogin.demoConnexionMasseur}" value="DEMO Masseur" look="default" style="width:100%" />
+							</b:column>
+							<b:column span="3">
+								<b:commandButton action="#{mbLogin.demoConnexionCommanditaire}" value="DEMO Commanditaire" look="default" style="width:100%" />
+							</b:column>
+						</b:row>
+					</b:container>
+			</h:form>
+		</div>
+		
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+	<!-- Agenda -->
+	<c:set var="currentDay" value="0" scope="session"/>
+	<div class="w3-margin-bottom">
+	      <ul class="w3-ul w3-border w3-hover-shadow">
+	      	<li><span class="w3-opacity">A venir : </span></li>
+	        <c:forEach items="#{mbAgenda.getAgenda(action).getTourners()}" var="tourner">
+	        	<c:choose>
+					<c:when test="#{tourner.isDay(currentDay)}">
+						<li class="w3-left-align"><b>#{tourner.timeStartString}</b> #{tourner.lieu}</li>
+					</c:when>
+					<c:otherwise>
+						<c:set var="currentDay" value="${tourner.dateStartString}"/>
+						<li class="w3-theme w3-xlarge">#{tourner.dateStartStringDisplay}</li>
+						<li class="w3-left-align"><b>#{tourner.timeStartString}</b> #{tourner.lieu}</li>
+					</c:otherwise>
+				</c:choose>
+	      </c:forEach>
+	      </ul>
+	</div>
+    
+</ui:composition>

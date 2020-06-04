@@ -1,0 +1,4 @@
+[servers]
+free.serv.fr.nf ansible_port=18023 ansible_connection=ssh ansible_user=sami ansible_ssh_common_args='-o StrictHostKeyChecking=no' host_key_checking=false ansible_sudo_pass=golgoth99
+home.serv.fr.nf ansible_port=18022 ansible_connection=ssh ansible_user=sami ansible_ssh_common_args='-o StrictHostKeyChecking=no' host_key_checking=false ansible_sudo_pass=golgoth99
+   ansible_port=22 ansible_connection=ssh ansible_user=sami ansible_ssh_common_args='-o StrictHostKeyChecking=no' host_key_checking=false ansible_sudo_pass=golgoth99

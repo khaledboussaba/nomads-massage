@@ -1,0 +1,74 @@
+version: '3.1'
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    domainname: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: nomads_bdd
+      MYSQL_USER: nomads
+      MYSQL_PASSWORD: massage
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - ./mysql/scripts:/docker-entrypoint-initdb.d
+      - ./mysql/mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+  
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    domainname: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: nomads
+      MONGO_INITDB_ROOT_PASSWORD: massage
+    volumes:
+      - ./mongodb/scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./mongodb/mongodb_data:/data/db
+    ports:
+      - 27017:27017
+  
+      
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.0
+    container_name: elastic
+    domainname: elastic
+    environment:
+      - ELASTIC_PASSWORD=nomads_massage
+      - node.name=elastic
+      - cluster.initial_master_nodes=elastic
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.ml.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elastic/elastic_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.6.0
+    container_name: kibana
+    domainname: kibana
+    volumes:
+      - ./kibana/kibana_data/kibana.yml:/usr/share/kibana/config/kibana.yml      
+    ports:
+      - 5601:5601
+ 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.6.0
+    container_name: logstash
+    domainname: logstast
+    volumes:
+      - ./logstash/logstash_data/logstash.yml:/usr/share/logstash/config/logstash.yml
+    ports:
+      - 9600:9600
+
+    

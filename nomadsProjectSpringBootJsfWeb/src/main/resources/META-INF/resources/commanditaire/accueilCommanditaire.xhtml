@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<f:metadata>
+          			<f:event type="preRenderView" listener="#{mbCommanditaire.init}"/>
+     	</f:metadata>
+     			
+		<h1 style="margin-top: 50px; text-align: center;">Bienvenue dans
+			votre espace</h1>
+		<h1>
+			<h:outputLabel style="color:red;"
+				value="#{mbCommanditaire.commanditaire.raisonSociale}" />
+		</h1>
+		<div>
+			<h2>Liste de vos lieux</h2>
+		</div>
+
+		<div>
+
+			<h:form>
+
+				<b:dataTable styleClass="table" value="#{mbCommanditaire.lieux}"
+					var="l">
+					<b:dataTableColumn>
+						<f:facet name="header">Nom</f:facet>
+						<h:outputText value="#{l.nom}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn  styleClass="w3-center">
+						<f:facet name="header">Statut</f:facet>
+						<h:outputText value="#{l.statut.libelle}"/>
+					</b:dataTableColumn>
+				</b:dataTable>
+
+			</h:form>
+		</div>
+
+		<b:link value="Ajouter un lieu" outcome="ajouterLieu.xhtml"
+			styleClass="btn btn-success w3-right" />
+
+		<div>
+			<h2>Agenda des tournées dans vos lieux</h2>
+		</div>
+
+		<div>
+
+
+			<h:form>
+			
+				<b:dataTable styleClass="table"
+					value="#{mbCommanditaire.lieuxTournnees}" var="t">
+					<b:dataTableColumn>
+						<f:facet name="header">Lieu</f:facet>
+						<h:outputText value="#{t.lieu.nom}" styleClass="w3-left" />
+					</b:dataTableColumn>
+						
+					<b:dataTableColumn styleClass="w3-center">
+					<f:facet name="header">Date</f:facet>
+						<h:outputText
+							value="#{mbGlobal.getDateFormated(t.tournee.date)}" />
+					</b:dataTableColumn>
+					
+					<b:dataTableColumn styleClass="w3-center">
+					<f:facet name="header">Débute à</f:facet>
+						<h:outputText
+							value="#{mbGlobal.getTimeFormated(t.tournee.heureDebut)}" />
+					</b:dataTableColumn>
+					
+				</b:dataTable>
+
+			</h:form>
+		</div>
+
+		<b:link value="Ajouter une tournée" outcome="ajouterTournee.xhtml"
+			styleClass="btn btn-success w3-right" />
+
+	</ui:define>
+</ui:composition>
+</html>

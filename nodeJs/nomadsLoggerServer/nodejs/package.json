@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server web/rest avec mysql",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Khaled BOUSSABA & Sami ILEKTI & David HAUTERVILLE",
+  "license": "AFCEPF-EQL",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "custom-env": "^1.0.2",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.3",
+    "mysql": "^2.18.1",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

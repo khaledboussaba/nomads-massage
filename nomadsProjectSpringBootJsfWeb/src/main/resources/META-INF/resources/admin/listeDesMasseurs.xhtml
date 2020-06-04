@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+	
+	<h3 style="margin-top: 50px; text-align: center;"> Listes des Masseurs </h3>
+
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbAdmin.tousLesMasseurs}" var="m">
+					<b:dataTableColumn>
+						<f:facet name="header">Raison Sociale</f:facet>
+						<h:outputText value="#{m.raisonSociale}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{m.numeroSIRET}">
+						<f:facet name="header">Numéro SIRET</f:facet>
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{m.nomMasseur}">
+						<f:facet name="header">Nom</f:facet>
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{m.prenomMasseur}">
+						<f:facet name="header">Prénom</f:facet>
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Adresse</f:facet>
+						<h:outputText value="#{m.adresse.libelleAdresse}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{m.adresse.ville.codePostal}">
+						<f:facet name="header">Code postal</f:facet>
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{m.adresse.ville.libelle}">
+						<f:facet name="header">Ville</f:facet>
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+		
+	</ui:define>
+</ui:composition>
+</html>

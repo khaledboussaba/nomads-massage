@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<div>
+			<h2 style="margin-top: 50px; text-align: center;">Tournées
+				disponibles</h2>
+		</div>
+
+
+		<h:form>
+
+			<div class="w3-container">
+
+				<ui:repeat id="itemsRepeater" value="#{mbMasseur.tourneesDisponiblesSansMesTournees}" var="tdd">
+					<ui:include src="itemTourneePresentation.xhtml">
+						<ui:param name="item" value="#{tdd}" />
+					</ui:include>
+				</ui:repeat>
+
+			</div>
+		</h:form>
+		
+<!-- 		<h:form styleClass=""> -->
+<!-- 			<b:dataTable value="#{mbMasseur.tourneesDisponiblesSansMesTournees}" -->
+<!-- 				var="tdd"> -->
+<!-- 				<b:dataTableColumn label="Date" -->
+<!-- 					value="#{mbGlobal.getDateFormated(tdd.tournee.date)}" /> -->
+<!-- 				<b:dataTableColumn> -->
+<!-- 				<f:facet name="header"> -->
+<!-- 				    Adresse -->
+<!-- 			    </f:facet> -->
+<!-- 					<h:outputText value="#{tdd.lieu.nom}" styleClass="w3-left" /><br/> -->
+<!-- 					<h:outputText value="#{tdd.lieu.adresse.libelleAdresse}" styleClass="w3-left" /><br/> -->
+<!-- 					<h:outputText value="#{tdd.lieu.adresse.ville.codePostal} #{tdd.lieu.adresse.ville.libelle}" styleClass="w3-left" /> -->
+<!-- 				</b:dataTableColumn> -->
+<!-- 				<b:dataTableColumn styleClass="w3-center"> -->
+<!-- 					<f:facet name="header">Débute à</f:facet> -->
+<!-- 					<h:outputText -->
+<!-- 						value="#{mbGlobal.getTimeFormated(tdd.tournee.heureDebut)}" /> -->
+<!-- 				</b:dataTableColumn> -->
+<!-- 				<b:dataTableColumn label="imperativement" -->
+<!-- 					value="#{mbMasseur.afficherTourneeImperative(tdd.tournee.tourneeImperative)}" /> -->
+<!-- 				<b:dataTableColumn styleClass="w3-center"> -->
+<!-- 					<f:facet name="header">fini à</f:facet> -->
+<!-- 					<h:outputText -->
+<!-- 						value="#{mbGlobal.getTimeFormated(tdd.tournee.heureFin)}" /> -->
+<!-- 				</b:dataTableColumn> -->
+<!-- 				<b:dataTableColumn label="Crédits" value="#{tdd.tournee.prixCredit}" /> -->
+<!-- 				<b:dataTableColumn label=""> -->
+<!-- 					<b:commandButton value="rejoindre" -->
+<!-- 						action="#{mbMasseur.inscrireTournee(tdd.tournee)}" /> -->
+<!-- 				</b:dataTableColumn> -->
+<!-- 			</b:dataTable> -->
+<!-- 		</h:form> -->
+
+
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		<f:metadata>
+        	<f:event type="preRenderView" listener="#{mbRegisterAdministrateur.initUserOnLoad}"/>
+     	</f:metadata>
+     	<h3 style="margin-top: 50px; text-align:center;">Ajouté un Administrateur</h3>
+				<h:form>
+					<h:outputText value="#{mbRegisterAdministrateur.error}"
+						class="w3-text-red w3-large" />
+					<div class="w3-container w3-theme-l5" id="contact">
+						<div class="w3-section">
+							<label>login : </label>
+							<h:inputText id="login"
+								value="#{mbRegisterAdministrateur.utilisateur.credentials.login}"
+								class="w3-input" />
+						</div>
+						<div class="w3-section">
+							<label>Mots de passe : </label>
+							<h:inputText id="password"
+								value="#{mbRegisterAdministrateur.utilisateur.credentials.clearPassword}"
+								class="w3-input" />
+						</div>
+						<div class="w3-section">
+							<label>Titre : </label>
+							<h:selectOneListbox id="titre"
+								value="#{mbRegisterAdministrateur.utilisateur.contacts[0].titre.libelle}"
+								class="w3-input">
+								<f:selectItem itemValue="Mr" itemLabel="Monsieur" />
+								<f:selectItem itemValue="Mme" itemLabel="Madame" />
+							</h:selectOneListbox>
+						</div>
+						<div class="w3-section">
+							<label>Adresse : </label>
+							<h:inputText id="adresse"
+								value="#{mbRegisterAdministrateur.utilisateur.adresse.libelleAdresse}"
+								class="w3-input" />
+						</div>
+						<div class="w3-section">
+							<label>Email : </label>
+							<h:inputText id="email"
+								value="#{mbRegisterAdministrateur.utilisateur.contacts[0].email}"
+								class="w3-input" />
+						</div>
+
+						<div class="w3-section">
+							<label>Téléphone : </label>
+							<h:inputText id="phone"
+								value="#{mbRegisterAdministrateur.utilisateur.contacts[0].numeroTelephone}"
+								class="w3-input" />
+						</div>
+						<div class="w3-section">
+							<label>Raison Social : </label>
+							<h:inputText id="raisonSocial"
+								value="#{mbRegisterAdministrateur.utilisateur.raisonSociale}"
+								class="w3-input" />
+						</div>
+
+						<div class="w3-section">
+							<label>Numéro de Siret : </label>
+							<h:inputText id="numeroSiret"
+								value="#{mbRegisterAdministrateur.utilisateur.numeroSIRET}"
+								class="w3-input" />
+						</div>
+						<h:commandButton
+							action="#{mbLogin.validezAdministrateur}"
+							class="w3-button w3-right w3-theme" value="Validez" />
+					</div>
+
+				</h:form>
+	</ui:define>
+</ui:composition>
+</html>

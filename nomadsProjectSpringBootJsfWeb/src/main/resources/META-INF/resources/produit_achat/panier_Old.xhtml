@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+
+			<h3 style="margin-top: 50px;">Votre panier</h3>
+			
+			<div class="w3-container">
+				<h:form>
+					<b:dataTable value="#{mbCatalogue.lignes}" var="l">
+						<b:dataTableColumn label="Produit" value="#{l.produit.libelle}" />
+						<b:dataTableColumn label="Quantité" value="#{l.nbrProduit}" />
+						
+						
+						<b:dataTableColumn label="PU" >
+							<h:outputText value="#{mbCurrencies.convert(l.produit.prixEuro)}">
+								<f:convertNumber pattern = "#.00€" />
+		            		</h:outputText>
+						</b:dataTableColumn>
+						<b:dataTableColumn label="">
+							<b:commandButton value="Supprimer" action="#{mbCatalogue.supprPanier(l)}" />						
+						</b:dataTableColumn>
+					</b:dataTable>
+				</h:form>
+			</div>
+			
+			<div class="container">
+				<h:outputLabel value="Total :" style="font-size:140%;"></h:outputLabel>&nbsp;
+				<h:outputText value="#{mbCurrencies.convert(mbCatalogue.totalPrixPanier)}" style="font-size:140%;">
+					<f:convertNumber pattern = "#0.00€" />
+	            </h:outputText><br/>
+				
+				<h:form>
+					<b:commandButton value="Valider et Payer" action="#{mbPanier.passerEnCaisse}" />
+				</h:form>
+
+			</div>
+	
+			
+	</ui:define>
+</ui:composition>
+
+</html>
+
+
+
+
+<!-- 				<h:commandButton value="AjoutPanier" -->
+<!-- 				actionListener="#{mbCatalogue.ajoutPanier()}" /> -->
+<!-- 				</h:column> -->

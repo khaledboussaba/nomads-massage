@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+		<f:metadata>
+			<f:event type="preRenderView"
+				listener="#{mbRegisterCommanditaire.initUserOnLoad}" />
+		</f:metadata>
+				
+				<h3 style="margin-top: 50px; text-align:center;">Inscription</h3>
+								
+				<h:form>
+						<b:commandButton action="#{mbRegisterCommanditaire.demoRegisteurCommanditaire}" value="DEMO" />
+				</h:form>
+	
+<b:container>
+				<b:form class="w3-container w3-card-4 w3-padding-16 w3-white w3-twothird-center w3-left-align">
+					<h:outputText value="#{mbRegisterCommanditaire.error}"
+						class="w3-text-red w3-large" />
+						<b:row>
+				<b:column offset="2" span="8">
+					<b:inputText placeholder="Raison Social" label="Raison Social"
+						id="raisonSocial" required="true"
+						value="#{mbRegisterCommanditaire.utilisateur.raisonSociale}">
+						<f:facet name="prepend">
+							<b:iconAwesome name="fa-industry" />
+						</f:facet>
+						<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+					</b:inputText>
+					<b:message for="raisonSocial" />
+				</b:column>
+			</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Numéro Siret" label="Numéro Siret" id="numeroSiret" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.numeroSIRET}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="fa-industry" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+								</b:inputText>
+							<b:message for="numeroSiret" />
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Adresse (numéro et nom de rue)" label="Adresse (numéro et nom de rue)"  id="adresse" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.adresse.libelleAdresse}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="fa-location-arrow" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+								</b:inputText>
+							<b:message for="adresse" />
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Code postal" label="Code postal" id="code_postaux" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.adresse.ville.codePostal}"
+								typeahead="true" typeahead-values="#{mbLogin.codePostaux}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="home" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[0-9]{5}$" />
+								</b:inputText>
+								<b:message for="code_postaux" />
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Ville" label="Ville" id="nom_ville" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.adresse.ville.libelle}"
+								typeahead="true" typeahead-values="#{mbLogin.villeList}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="fa-globe" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+								</b:inputText>
+							<b:message for="nom_ville" />
+						</b:column>
+						</b:row>
+						<hr/>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:selectOneMenu  id="titre"
+								 label="Titre du contact" 
+								value="#{mbRegisterCommanditaire.utilisateur.contacts[0].titre}" 
+								converter="omnifaces.SelectItemsConverter" >
+								<f:facet name="prepend">
+									<b:iconAwesome name="fa-intersex" />
+								</f:facet>
+								<f:selectItems value="#{mbLogin.titreList}" var="selectedTitre"
+									itemLabel="#{selectedTitre.libelle}"
+									itemValue="#{selectedTitre}" />
+							</b:selectOneMenu>
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Nom du contact" required="true" id="nom_contact"
+								value="#{mbRegisterCommanditaire.utilisateur.contacts[0].nom}"
+								label="Nom du contact">
+								<f:facet name="prepend">
+									<b:icon name="user" />
+								</f:facet>
+								<f:validateLength minimum="4" maximum="50" />
+     							<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+							</b:inputText>
+							<b:message for="nom_contact" />
+						</b:column>
+						</b:row>
+						<b:row>
+						<b:column  offset="2" span="8">
+							<b:inputText id="prenom" placeholder="Prénom du contact" label="Prénom du contact" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.contacts[0].prenom}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome  name="fa-user-circle-o" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+								</b:inputText>
+								<b:message for="prenom" />
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Email du contact" label="Email du contact" id="email" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.contacts[0].email}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="fa-envelope-o" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s@]{4,50}$" />
+								</b:inputText>
+							<b:message for="email" />
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Poste occupé" label="Poste occupé" id="poste_occupe" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.contacts[0].posteOccupe}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="fa-briefcase" />
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+								</b:inputText>
+							<b:message for="poste_occupe" />
+						</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Numéro de téléphone" label="Numéro de téléphone"  id="telephone" required="true" 
+								value="#{mbRegisterCommanditaire.utilisateur.contacts[0].numeroTelephone}"
+								>
+								<f:facet name="prepend">
+									<b:iconAwesome name="phone"/>
+								</f:facet>
+								<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+								</b:inputText>
+							<b:message for="telephone" />
+						</b:column>
+						</b:row>
+						<hr/>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputText placeholder="Login" required="true" id="login"
+								value="#{mbRegisterCommanditaire.utilisateur.credentials.login}"
+								label="Login" >
+								<f:facet name="prepend">
+									<b:icon name="user" />
+								</f:facet>
+								<f:validateLength minimum="4" maximum="50" />
+     							<f:validateRegex pattern="^$|^[A-Za-z0-9-_./\s]{4,50}$" />
+							</b:inputText>
+							<b:message for="login" />
+							</b:column>
+						</b:row>
+						<b:row>
+							 <b:column  offset="2" span="8">
+							<b:inputSecret placeholder="Mot de passe" label="Mot de passe" id="password"
+								value="#{mbRegisterCommanditaire.utilisateur.credentials.clearPassword}" 
+								required="true" >
+								<f:facet name="prepend">
+									<b:iconAwesome name="key" />
+								</f:facet>
+								<f:validateLength minimum="4" maximum="50" />
+     							<f:validateRegex pattern="^$|^[A-Za-z-_./\s]{2,50}$" />
+							</b:inputSecret><b:message for="password" />
+						</b:column>
+						</b:row>
+						<hr/>
+						<b:row>
+							 <b:column  offset="0" span="12" class="w3-center">
+						<b:commandButton action="#{mbLogin.validezCommanditaire}"
+							class="w3-button  w3-theme w3-center" value="Valider"  iconAwesome="fa-check-square" />
+
+						</b:column>
+						</b:row>
+						
+						
+				</b:form>
+			</b:container>
+
+		
+
+	</ui:define>
+</ui:composition>
+</html>

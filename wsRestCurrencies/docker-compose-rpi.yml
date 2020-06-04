@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+
+  db_currency:
+    image: biarms/mysql
+    hostname: currency.sql
+    domainname: nomads.fr.to
+    container_name: currency_db
+    environment:
+      MYSQL_DATABASE: currency_bdd
+      MYSQL_USER: rootCurrency
+      MYSQL_PASSWORD: rootCurrencyPassword
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - volume_db_currency:/var/lib/mysqlCurrencyDb
+    restart: unless-stopped
+
+  currency:
+    image: currency_img
+    hostname: currency.rest.api
+    domainname: nomads.fr.to
+    container_name: currency
+    build:
+      context: .
+      dockerfile: ./DockerfileRpi
+    volumes:
+      - volume_currency:/var/lib/mysqlCurrency
+    restart: always
+    ports:
+      - 91:91
+
+
+volumes:
+  volume_db_currency:
+  volume_currency:

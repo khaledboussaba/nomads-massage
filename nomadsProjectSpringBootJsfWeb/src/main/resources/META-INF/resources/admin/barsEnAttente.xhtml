@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+		<h3 style="margin-top: 50px; text-align:center;">Il y a <h:outputText value="#{mbAdmin.nbBarsEnAttente}"/> Bar(s) en attente de validation :</h3>
+		<div class="">
+			<h:form>
+				<b:dataTable value="#{mbAdmin.barsEnAttente}" var="b">
+				<b:dataTableColumn>
+						<f:facet name="header">Nom</f:facet>
+						<h:outputText value="#{b.nom}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn>
+						<f:facet name="header">Adresse</f:facet>
+						<h:outputText value="#{b.adresse.libelleAdresse}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn label="Ville" value="#{b.adresse.ville.libelle}" />
+					<b:dataTableColumn label="">
+						<b:commandButton value="activer" action="#{mbAdmin.activerBar(b.id)}" />						
+					</b:dataTableColumn>
+				</b:dataTable>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

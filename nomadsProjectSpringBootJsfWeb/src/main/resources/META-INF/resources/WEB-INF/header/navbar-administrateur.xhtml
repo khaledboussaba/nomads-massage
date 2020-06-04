@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+	
+	<h:link outcome="/admin/accueilAdmin.xhtml" value="Accueil" class="w3-bar-item w3-button w3-hover-teal" />
+	<h:link outcome="/admin/listeDesTournees.xhtml" value="Tournées" class="w3-bar-item w3-button w3-hover-teal" />
+	<h:link outcome="/admin/listeDesCommanditaires.xhtml" value="Commanditaires" class="w3-bar-item w3-button w3-hover-teal" />
+	<h:link outcome="/admin/barsEnAttente.xhtml" value="Bars en attente(#{mbAdmin.nbBarsEnAttente})" class="w3-bar-item w3-button w3-hover-teal"/>
+	<h:link outcome="/admin/listeDesMasseurs.xhtml" value="Masseurs" class="w3-bar-item w3-button w3-hover-teal" />
+	<h:link outcome="/admin/stocks.xhtml" value="Stock" class="w3-bar-item w3-button w3-hover-teal" />
+	<h:link outcome="/admin/ws_gestion_stock/stocks.xhtml" value="StocksWS" class="w3-bar-item w3-button w3-hover-teal" />
+	<h:link outcome="goRegisterAdministrateur" value="Add Admin" class="w3-bar-item w3-button w3-hover-teal">
+		<i class="fa fa-user-circle-o"/>
+	</h:link>
+	<h:link outcome="goDisconnect" value="Se deconnecter" class="w3-bar-item w3-button w3-hover-teal" />
+	
+</ui:composition>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<f:view>
+	<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Produits</title>
+	</head>
+	<body>
+	
+	<ui:composition template="/WEB-INF/MasterPage.xhtml">	
+		<ui:define name="title">Nomad's</ui:define>
+			<ui:define name="content">
+			
+
+		<h2>Liste des Produits </h2>
+		<h:form class="container">
+			<h3>Tournées </h3>
+			<h:dataTable value="#{mbCatalogue.tournees}" var="t">
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					<h:outputText value="#{t.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">commence à </f:facet>
+					<h:outputText value="#{t.heureDebut}" />
+ 				</h:column>
+				<h:column>
+					<f:facet name="header"> fini à </f:facet>
+					<h:outputText value="#{t.heureFin}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Credits</f:facet>
+					<h:outputText value="#{t.prixCredit}" />
+				</h:column>
+			</h:dataTable>
+			<h3>Pack de crédits </h3>
+			<h:dataTable styleClass="table"  value="#{mbCatalogue.packs}" var="p">
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					<h:outputText value="#{p.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">libelle</f:facet>
+					<h:outputText value="#{p.libelle}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nb Credit</f:facet>
+					<h:outputText value="#{p.nombreCredit}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">€</f:facet>
+					<h:outputText value="#{p.prixEuro}" />
+				</h:column>
+			</h:dataTable>
+					<h3>Matériel </h3>
+			<h:dataTable value="#{mbCatalogue.materiels}" var="m">
+				<h:column>
+					<f:facet name="header">Id</f:facet>
+					<h:outputText value="#{m.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">categorie</f:facet>
+					<h:outputText value="#{m.categorie}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">couleur</f:facet>
+					<h:outputText value="#{m.couleur}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">marque</f:facet>
+					<h:outputText value="#{m.marque}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">modele</f:facet>
+					<h:outputText value="#{m.modele}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">taille</f:facet>
+					<h:outputText value="#{m.taille}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">€</f:facet>
+					<h:outputText value="#{m.prixEuro}" />
+				</h:column>
+			</h:dataTable>
+			
+		</h:form>
+			</ui:define>
+	</ui:composition>
+	</body>
+</f:view>
+</html>
+
+<!-- 
+id_discriminator_produit
+id_produit
+prix_credit
+prix_euro
+categorie
+couleur
+marque
+modele
+taille
+libelle
+nombre_credit
+date
+heure_debut
+heure_debut_imperative
+heure_fin
+tournee_imperative
+  -->

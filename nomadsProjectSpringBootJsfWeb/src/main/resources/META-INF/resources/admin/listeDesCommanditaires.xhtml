@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+	
+	<h3 style="margin-top: 50px; text-align: center;"> Lites des Commanditaires </h3>
+
+		
+				<b:dataTable value="#{mbAdmin.tousLescommanditaires}" var="c">
+					<b:dataTableColumn >
+						<f:facet name="header"  styleClass="w3-left">Raison Sociale</f:facet>
+						<h:outputText value="#{c.raisonSociale}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{c.numeroSIRET}"  styleClass="w3-center">
+						<f:facet name="header">Numéro SIRET</f:facet>
+					</b:dataTableColumn>
+					<b:dataTableColumn styleClass="w3-center">
+						<f:facet name="header">Adresse</f:facet>
+						<h:outputText value="#{c.adresse.libelleAdresse}" styleClass="w3-left" />
+					</b:dataTableColumn>
+					<b:dataTableColumn value="#{c.adresse.ville.libelle}"  styleClass="w3-center">
+						<f:facet name="header">Ville</f:facet>
+					</b:dataTableColumn>
+				</b:dataTable>
+
+
+	</ui:define>
+</ui:composition>
+</html>

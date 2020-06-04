@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/WEB-INF/MasterPage.xhtml">	
+	<ui:define name="title">Nomad's</ui:define>
+	<ui:define name="content">
+
+
+<div class="w3-container w3-padding-64 w3-center" id="presentation">
+<h2>BIENVENUE sur NOMAD'S MASSAGE</h2>
+<p>LE BIEN-ÊTRE VIENT À VOUS, OÙ QUE VOUS SOYEZ</p>
+<p>Il n'est pas souvent possible de se déplacer pour aller se faire masser. Cela ne fait rien, ce sont nos masseurs qui se déplacent et vous proposent un réel moment de détente, là où vous êtes.Il n'est pas souvent possible de se déplacer pour aller se faire masser. Cela ne fait rien, ce sont nos masseurs qui se déplacent et vous proposent un réel moment de détente, là où vous êtes.Il n'est pas souvent possible de se déplacer pour aller se faire masser. Cela ne fait rien, ce sont nos masseurs qui se déplacent et vous proposent un réel moment de détente, là où vous êtes.</p>
+
+<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+    <h2>- AGENDA MASSAGE -</h2>
+    <p>Vous chercher à vous faire masser ?</p><br/>
+
+<ui:include src="/WEB-INF/agenda/agenda.xhtml">
+	<ui:param name="action" value="now1" />
+</ui:include>
+
+
+</div> 
+</div>
+
+
+</ui:define>
+</ui:composition>
+</html>
